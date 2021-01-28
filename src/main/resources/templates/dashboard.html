@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <title>Webexecuter Dashboard</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
+<br />
+<table>
+    <thead>
+        <tr>
+            <th>Task</th>
+            <th></th>
+            <th>Last Run</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Water Bill</td>
+            <td>
+                <form th:action="@{/waterBill}" method="put">
+                    <input type="submit" value="Execute"/>
+                </form>
+            </td>
+            <td><span th:text="${waterBillLastRun}" /></td>
+        </tr>
+    </tbody>
+</table>
+<br />
+<form th:action="@{/logout}" method="post">
+    <input type="submit" value="Sign Out"/>
+</form>
+</body>
+</html>
