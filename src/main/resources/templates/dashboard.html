@@ -4,20 +4,24 @@
 <head>
     <title>Webexecuter Dashboard</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="webjars/bootstrap/3.3.6/css/bootstrap.min.css"
+        rel="stylesheet">
 </head>
 <body>
 <h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
 <br />
-<table>
+<table class="table table-hover">
     <thead>
         <tr>
-            <th>Task</th>
-            <th></th>
-            <th>Last Run</th>
+            <th scope="coll">#</th>
+            <th scope="col">Task</th>
+            <th scope="col"></th>
+            <th scope="col">Last Run</th>
         </tr>
     </thead>
     <tbody>
         <tr>
+            <th scope="row">1</th>
             <td>Water Bill</td>
             <td>
                 <form th:action="@{/waterBill}" method="put">
@@ -32,5 +36,7 @@
 <form th:action="@{/logout}" method="post">
     <input type="submit" value="Sign Out"/>
 </form>
+<script src="webjars/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="webjars/jquery/1.9.1/jquery.min.js"></script>
 </body>
 </html>
