@@ -37,8 +37,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         // remember the password that is printed out and use in the next step
         // System.out.println(encoder.encode("password"));
 
-        UserDetails user = User.withUsername("user")
-            .password("{bcrypt}$2a$10$dXJ3SW6G7P50lGmMkkmwe.20cQQubK3.HZWzG3YB1tlRy.fqvM/BG")
+        UserDetails user = User.withUsername("kpearson")
+            .password("{bcrypt}$2a$10$UHbQfHC/OU8CBjiQTQwJ8eCYYRqKDLxouZ2x.yLDgXe/LDgYHssyS")
             .roles("USER")
             .build();
 
