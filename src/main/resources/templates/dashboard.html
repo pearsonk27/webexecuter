@@ -24,8 +24,9 @@
             <th scope="row">1</th>
             <td>Water Bill</td>
             <td>
-                <form th:action="@{/waterBill}" method="put">
+                <form th:action="@{/dashboard}" th:method="post">
                     <input type="submit" value="Execute"/>
+                    <input type="hidden" name="name" th:value="waterBill"/>
                 </form>
             </td>
             <td><span th:text="${waterBillLastRun}" /></td>
