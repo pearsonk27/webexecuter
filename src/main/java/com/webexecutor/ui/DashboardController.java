@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class DashboardController {
 
     @Autowired
-    private AppProperties appProperties;
+    private ExecutionService executionService;
 
     @GetMapping("/dashboard")
     public void dashboard(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
@@ -22,8 +22,8 @@ public class DashboardController {
 
     @PostMapping("/dashboard")
     public void execute(@RequestParam(name="name", required=true) String name, Model model) {
-        System.out.println(appProperties.getExecutionDirectory());
-        System.out.println(name);
+        Task task = Task.findTaskByUiName(name);
+        executionService.run(task);
         dashboard("waterBill", model);
     }
 }
