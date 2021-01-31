@@ -1,5 +1,6 @@
 package com.webexecutor.ui;
 
+import java.io.IOException;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +17,8 @@ public class DashboardController {
     private ExecutionService executionService;
 
     @GetMapping("/dashboard")
-    public void dashboard(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
+    public void dashboard(@RequestParam(name = "name", required = false, defaultValue = "World") String name,
+            Model model) {
         model.addAttribute("waterBillLastRun", new Date());
         model.addAttribute("gasBillLastRun", new Date());
         model.addAttribute("electricBillLastRun", new Date());
@@ -24,9 +26,9 @@ public class DashboardController {
     }
 
     @PostMapping("/dashboard")
-    public void execute(@RequestParam(name="name", required=true) String name, Model model) {
+    public void execute(@RequestParam(name = "name", required = true) String name, Model model) throws IOException {
         Task task = Task.findTaskByUiName(name);
-        executionService.run(task);
+        executionService.run(task, Runtime.getRuntime());
         dashboard(name, model);
     }
 }
