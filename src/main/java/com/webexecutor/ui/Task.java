@@ -2,7 +2,9 @@ package com.webexecutor.ui;
 
 public enum Task {
     WATER_BILL("waterBill", "water_bill"),
-    GAS_BILL("gasBill", "gas_bill");
+    GAS_BILL("gasBill", "gas_bill"),
+    ELECTRIC_BILL("electricBill", "electric_bill"),
+    CABLE_BILL("cableBill", "cable_bill");
 
     private final String uiName;
     private final String executionName;

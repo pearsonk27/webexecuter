@@ -31,6 +31,39 @@
                     </td>
                     <td><span th:text="${waterBillLastRun}" /></td>
                 </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>Gas Bill</td>
+                    <td>
+                        <form th:action="@{/dashboard}" th:method="post">
+                            <input type="submit" value="Execute"/>
+                            <input type="hidden" name="name" th:value="gasBill"/>
+                        </form>
+                    </td>
+                    <td><span th:text="${gasBillLastRun}" /></td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td>Electric Bill</td>
+                    <td>
+                        <form th:action="@{/dashboard}" th:method="post">
+                            <input type="submit" value="Execute"/>
+                            <input type="hidden" name="name" th:value="electricBill"/>
+                        </form>
+                    </td>
+                    <td><span th:text="${electricBillLastRun}" /></td>
+                </tr>
+                <tr>
+                    <th scope="row">4</th>
+                    <td>Cable Bill</td>
+                    <td>
+                        <form th:action="@{/dashboard}" th:method="post">
+                            <input type="submit" value="Execute"/>
+                            <input type="hidden" name="name" th:value="cableBill"/>
+                        </form>
+                    </td>
+                    <td><span th:text="${cableBillLastRun}" /></td>
+                </tr>
             </tbody>
         </table>
         <br />

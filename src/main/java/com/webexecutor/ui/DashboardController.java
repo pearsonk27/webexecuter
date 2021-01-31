@@ -18,12 +18,15 @@ public class DashboardController {
     @GetMapping("/dashboard")
     public void dashboard(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
         model.addAttribute("waterBillLastRun", new Date());
+        model.addAttribute("gasBillLastRun", new Date());
+        model.addAttribute("electricBillLastRun", new Date());
+        model.addAttribute("cableBillLastRun", new Date());
     }
 
     @PostMapping("/dashboard")
     public void execute(@RequestParam(name="name", required=true) String name, Model model) {
         Task task = Task.findTaskByUiName(name);
         executionService.run(task);
-        dashboard("waterBill", model);
+        dashboard(name, model);
     }
 }
