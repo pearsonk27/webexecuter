@@ -23,6 +23,7 @@ public class DashboardController {
         model.addAttribute("gasBillLastRun", new Date());
         model.addAttribute("electricBillLastRun", new Date());
         model.addAttribute("cableBillLastRun", new Date());
+        model.addAttribute("testLastRun", new Date());
     }
 
     @PostMapping("/dashboard")

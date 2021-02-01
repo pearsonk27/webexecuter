@@ -13,7 +13,7 @@ public class ExecutionService {
     private AppProperties appProperties;
 
     public void run(Task task, Runtime runtime) throws IOException {
-        String cmd = String.format("python %s.py", Paths.get(appProperties.getExecutionDirectory(), task.getExecutionName()));
+        String cmd = String.format("%s %s.py", appProperties.getPythonCommand(), Paths.get(appProperties.getExecutionDirectory(), task.getExecutionName()));
         runtime.exec(cmd);
     }
     

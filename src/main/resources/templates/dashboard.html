@@ -64,6 +64,17 @@
                     </td>
                     <td><span th:text="${cableBillLastRun}" /></td>
                 </tr>
+                <tr>
+                    <th scope="row">5</th>
+                    <td>Test</td>
+                    <td>
+                        <form th:action="@{/dashboard}" th:method="post">
+                            <input type="submit" value="Execute"/>
+                            <input type="hidden" name="name" th:value="test"/>
+                        </form>
+                    </td>
+                    <td><span th:text="${testLastRun}" /></td>
+                </tr>
             </tbody>
         </table>
         <br />
