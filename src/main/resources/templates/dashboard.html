@@ -13,67 +13,25 @@
         <table class="table table-hover">
             <thead>
                 <tr>
-                    <th scope="coll">#</th>
-                    <th scope="col">Task</th>
+                    <th scope="col">Task Id</th>
+                    <th scope="col">Task Name</th>
                     <th scope="col"></th>
                     <th scope="col">Last Run</th>
+                    <th scope="col">Was Success</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Water Bill</td>
+                <tr th:each="taskMetric : ${taskMetrics}">
+                    <th scope="row" th:text="${taskMetric.getTaskId()}" />
+                    <td th:text="${taskMetric.getTaskName()}" />
                     <td>
                         <form th:action="@{/dashboard}" th:method="post">
                             <input type="submit" value="Execute"/>
-                            <input type="hidden" name="name" th:value="waterBill"/>
+                            <input type="hidden" name="name" th:value="${taskMetric.getTaskName()}"/>
                         </form>
                     </td>
-                    <td><span th:text="${waterBillLastRun}" /></td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Gas Bill</td>
-                    <td>
-                        <form th:action="@{/dashboard}" th:method="post">
-                            <input type="submit" value="Execute"/>
-                            <input type="hidden" name="name" th:value="gasBill"/>
-                        </form>
-                    </td>
-                    <td><span th:text="${gasBillLastRun}" /></td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Electric Bill</td>
-                    <td>
-                        <form th:action="@{/dashboard}" th:method="post">
-                            <input type="submit" value="Execute"/>
-                            <input type="hidden" name="name" th:value="electricBill"/>
-                        </form>
-                    </td>
-                    <td><span th:text="${electricBillLastRun}" /></td>
-                </tr>
-                <tr>
-                    <th scope="row">4</th>
-                    <td>Cable Bill</td>
-                    <td>
-                        <form th:action="@{/dashboard}" th:method="post">
-                            <input type="submit" value="Execute"/>
-                            <input type="hidden" name="name" th:value="cableBill"/>
-                        </form>
-                    </td>
-                    <td><span th:text="${cableBillLastRun}" /></td>
-                </tr>
-                <tr>
-                    <th scope="row">5</th>
-                    <td>Test</td>
-                    <td>
-                        <form th:action="@{/dashboard}" th:method="post">
-                            <input type="submit" value="Execute"/>
-                            <input type="hidden" name="name" th:value="test"/>
-                        </form>
-                    </td>
-                    <td><span th:text="${testLastRun}" /></td>
+                    <td th:text="${taskMetric.getLastExecutionStartDateTime()}" />
+                    <td th:text="${taskMetric.getWasSuccess()}" />
                 </tr>
             </tbody>
         </table>

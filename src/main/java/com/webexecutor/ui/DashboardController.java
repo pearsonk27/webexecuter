@@ -16,6 +16,9 @@ public class DashboardController {
     @Autowired
     private ExecutionService executionService;
 
+    @Autowired
+    private TaskService taskService;
+
     @GetMapping("/dashboard")
     public void dashboard(@RequestParam(name = "name", required = false, defaultValue = "World") String name,
             Model model) {
@@ -24,6 +27,7 @@ public class DashboardController {
         model.addAttribute("electricBillLastRun", new Date());
         model.addAttribute("cableBillLastRun", new Date());
         model.addAttribute("testLastRun", new Date());
+        model.addAttribute("taskMetrics", taskService.findAll());
     }
 
     @PostMapping("/dashboard")
