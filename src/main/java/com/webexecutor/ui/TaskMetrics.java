@@ -1,6 +1,7 @@
 package com.webexecutor.ui;
 
 import java.time.OffsetDateTime;
+import java.time.format.DateTimeFormatter;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -21,6 +22,9 @@ public class TaskMetrics {
     @Column(name = "task_name", nullable = false)
     private String taskName;
 
+    @Column(name = "task_display_name", nullable = false)
+    private String taskDisplayName;
+
     @Column(name = "last_execution_start_date_time", nullable = false)
     private OffsetDateTime lastExecutionStartDateTime;
 
@@ -29,6 +33,9 @@ public class TaskMetrics {
 
     @Column(name = "was_success", nullable = false)
     private boolean wasSuccess;
+
+    @Column(name = "current_status", nullable = false)
+    private String currentStatus;
 
     public int getTaskId() {
         return taskId;
@@ -68,5 +75,29 @@ public class TaskMetrics {
 
     public void setWasSuccess(boolean wasSuccess) {
         this.wasSuccess = wasSuccess;
+    }
+
+    public String getTaskDisplayName() {
+        return taskDisplayName;
+    }
+
+    public void setTaskDisplayName(String taskDisplayName) {
+        this.taskDisplayName = taskDisplayName;
+    }
+
+    public String getCurrentStatus() {
+        return currentStatus;
+    }
+
+    public void setCurrentStatus(String currentStatus) {
+        this.currentStatus = currentStatus;
+    }
+
+    public String getFormattedLastExecutionStartDateTime() {
+        if (lastExecutionStartDateTime == null) {
+            return null;
+        }
+        DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd h:m a");
+        return lastExecutionStartDateTime.format(format);
     }
 }

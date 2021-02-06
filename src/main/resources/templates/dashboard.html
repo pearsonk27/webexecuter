@@ -18,20 +18,22 @@
                     <th scope="col"></th>
                     <th scope="col">Last Run</th>
                     <th scope="col">Was Success</th>
+                    <th scope="col">Current Status</th>
                 </tr>
             </thead>
             <tbody>
                 <tr th:each="taskMetric : ${taskMetrics}">
                     <th scope="row" th:text="${taskMetric.getTaskId()}" />
-                    <td th:text="${taskMetric.getTaskName()}" />
+                    <td th:text="${taskMetric.getTaskDisplayName()}" />
                     <td>
                         <form th:action="@{/dashboard}" th:method="post">
                             <input type="submit" value="Execute"/>
                             <input type="hidden" name="name" th:value="${taskMetric.getTaskName()}"/>
                         </form>
                     </td>
-                    <td th:text="${taskMetric.getLastExecutionStartDateTime()}" />
+                    <td th:text="${taskMetric.getFormattedLastExecutionStartDateTime()}" />
                     <td th:text="${taskMetric.getWasSuccess()}" />
+                    <td th:text="${taskMetric.getCurrentStatus()}" />
                 </tr>
             </tbody>
         </table>
