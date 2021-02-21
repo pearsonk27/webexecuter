@@ -1,7 +1,6 @@
 package com.webexecutor.ui;
 
 import java.io.IOException;
-import java.nio.file.Paths;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,7 +12,7 @@ public class ExecutionService {
     private AppProperties appProperties;
 
     public void run(Task task, Runtime runtime) throws IOException {
-        String cmd = String.format("%s %s.py", appProperties.getPythonCommand(), Paths.get(appProperties.getExecutionDirectory(), task.getExecutionName()));
+        String cmd = String.format("%s %s/main.py %s", appProperties.getPythonCommand(), appProperties.getExecutionDirectory(), task.getUiName());
         runtime.exec(cmd);
     }
     
