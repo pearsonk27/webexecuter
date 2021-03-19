@@ -14,7 +14,7 @@ public class ExecutionService {
     private AppProperties appProperties;
 
     public void run(Task task, Runtime runtime) throws IOException {
-        String cmd = String.format("%s %s/main.py %s", appProperties.getPythonCommand(), appProperties.getExecutionDirectory(), task.getUiName());
+        String cmd = String.format("%s %s/main.py %s", appProperties.getPythonCommand(), appProperties.getExecutionDirectory(), task.getDisplayName());
         runtime.exec(cmd);
     }
     
