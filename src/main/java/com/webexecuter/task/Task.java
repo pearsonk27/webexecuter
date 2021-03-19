@@ -1,4 +1,4 @@
-package com.webexecutor.ui;
+package com.webexecuter.task;
 
 public enum Task {
     WATER_BILL("waterBill", "water_bill", "Water Bill"),

@@ -2,6 +2,8 @@ package com.webexecutor.ui;
 
 import java.io.IOException;
 
+import com.webexecuter.task.Task;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

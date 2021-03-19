@@ -5,6 +5,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
 
+import com.webexecuter.task.TaskMetrics;
+
 import org.junit.jupiter.api.Test;
 
 public class TaskMetricsUnitTest {
