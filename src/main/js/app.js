@@ -51,13 +51,14 @@ class Task extends React.Component{
 	render() {
         link = this.props.task._links.self.href
 		id = link.substring(link.length - 1, link.length)
+		wasSuccess = this.props.task.wasSuccess == true ? "Yes" : "No"
 		return (
 			<tr>
 				<td scope="row">{id}</td>
                 <td>{this.props.task.taskDisplayName}</td>
                 <td><ExecuteButton task={this.props.task.taskName} /></td>
                 <td>{this.props.task.formattedLastExecutionStartDateTime}</td>
-                <td>{this.props.task.wasSuccess}</td>
+                <td>{wasSuccess}</td>
                 <td>{this.props.task.currentStatus}</td>
 			</tr>
 		)
@@ -67,8 +68,23 @@ class Task extends React.Component{
 class ExecuteButton extends React.Component{
 
 	handleClick = () => {
-		path = `/api/execute?name=${this.props.task}`
-		client({method: 'POST', path: path}).done(() => {});
+		// path = `/api/execute?name=${this.props.task}`
+		// client({method: 'POST', path: path}).done(() => {});
+
+		path = '/api/executionSchedules'
+		body = {
+			"task" : {
+			  "name" : "test",
+			  "displayName" : "Test"
+			},
+			"scheduleType" : {
+			  "name" : "One Time",
+			  "description" : "cron_expression is ignored when schedule_type is 'One Time'"
+			},
+			"startTime" : "2061-10-23T00:53:31.584-04:00",
+			"active" : true
+		}
+		client({method: 'POST', path, body}).done(() => {})
 	}
 
 	render() {

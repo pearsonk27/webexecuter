@@ -1,11 +1,9 @@
-package com.webexecutor.ui;
+package com.webexecuter.task;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
-
-import com.webexecuter.task.TaskMetrics;
 
 import org.junit.jupiter.api.Test;
 

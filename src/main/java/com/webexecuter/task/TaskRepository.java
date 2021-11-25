@@ -2,12 +2,12 @@ package com.webexecuter.task;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
-import org.springframework.data.rest.core.annotation.RestResource;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
+@Component
 @Repository
-@RepositoryRestResource
-@RestResource(exported = false)
+@RepositoryRestResource(exported = false)
 public interface TaskRepository extends CrudRepository<Task, Integer> {
     
     public default Task findByName(String name) {
